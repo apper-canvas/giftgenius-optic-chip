@@ -97,7 +97,7 @@ const [filters, setFilters] = React.useState({
         return false;
       }
       
-      // Eco-friendly filter
+// Eco-friendly filter
       if (filters.ecoFriendly) {
         const ecoFriendlyTags = ['eco-friendly', 'organic', 'sustainable', 'bamboo'];
         const hasEcoFriendlyTag = gift.tags && gift.tags.some(tag => 
@@ -107,7 +107,6 @@ const [filters, setFilters] = React.useState({
           return false;
         }
       }
-}
       
       return true;
     });
@@ -124,8 +123,9 @@ const [filters, setFilters] = React.useState({
       default:
         return filtered.sort((a, b) => b.matchScore - a.matchScore);
     }
+  }, [gifts, searchTerm, filters, sortBy]);
 
-const resetFilters = () => {
+  const resetFilters = () => {
     setFilters({
       categories: [],
       priceRange: { min: 0, max: 1000 },
