@@ -86,6 +86,18 @@ const navigation = [
             >
               Connect Social Media
             </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              icon="LogOut"
+              className="w-full text-xs text-red-600 hover:bg-red-50"
+              onClick={() => {
+                const { logout } = React.useContext(require('../../App').AuthContext);
+                logout();
+              }}
+            >
+              Logout
+            </Button>
             <div className="text-xs text-center text-gray-500">
               AI-Powered Gift Assistant
             </div>
