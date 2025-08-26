@@ -83,11 +83,40 @@ class SavedGiftService {
     return this.update(id, { notes: note });
   }
 
-  async getPriceAlerts() {
+async getPriceAlerts() {
     await this.delay(200);
     return this.data.filter(savedGift => savedGift.priceAlert);
   }
 
+  async createPriceAlert(savedGiftId, alertConfig) {
+    await this.delay(300);
+    const savedGift = this.data.find(sg => sg.Id === parseInt(savedGiftId));
+    if (!savedGift) throw new Error("Saved gift not found");
+
+    // Import priceAlertService dynamically to avoid circular dependency
+    const { priceAlertService } = await import('./priceAlertService.js');
+    
+    const alertData = {
+      giftId: savedGift.giftId,
+      recipientId: savedGift.recipientId,
+      ...alertConfig,
+      originalPrice: savedGift.gift?.price || 0
+    };
+
+    return await priceAlertService.create(alertData);
+  }
+
+  async updatePriceAlert(savedGiftId, alertConfig) {
+    await this.delay(250);
+    // Implementation would update existing alert for this saved gift
+    return alertConfig;
+  }
+
+  async removePriceAlert(savedGiftId) {
+    await this.delay(200);
+    const savedGift = await this.update(savedGiftId, { priceAlert: false });
+    return savedGift;
+  }
   getNextId() {
     return Math.max(...this.data.map(sg => sg.Id), 0) + 1;
   }

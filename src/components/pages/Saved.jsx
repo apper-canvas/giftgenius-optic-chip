@@ -14,9 +14,10 @@ import { giftService } from "@/services/api/giftService";
 import { recipientService } from "@/services/api/recipientService";
 import { format, parseISO } from "date-fns";
 import { toast } from "react-toastify";
+import AlertConfigModal from "@/components/molecules/AlertConfigModal";
 
 const Saved = () => {
-  const [savedGifts, setSavedGifts] = React.useState([]);
+const [savedGifts, setSavedGifts] = React.useState([]);
   const [gifts, setGifts] = React.useState([]);
   const [recipients, setRecipients] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
@@ -24,7 +25,8 @@ const Saved = () => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [sortBy, setSortBy] = React.useState("recent");
   const [filterBy, setFilterBy] = React.useState("all");
-
+  const [selectedSavedGift, setSelectedSavedGift] = React.useState(null);
+  const [showAlertConfig, setShowAlertConfig] = React.useState(false);
   React.useEffect(() => {
     loadSavedGifts();
   }, []);
@@ -65,24 +67,48 @@ const Saved = () => {
     // In real app, would open purchase URL
   };
 
-  const handlePriceAlertToggle = async (savedGift) => {
+const handlePriceAlertToggle = async (savedGift) => {
+    if (!savedGift.priceAlert) {
+      // Open configuration modal for new alerts
+      setSelectedSavedGift(savedGift);
+      setShowAlertConfig(true);
+    } else {
+      // Simple toggle for existing alerts
+      try {
+        const updated = await savedGiftService.update(savedGift.Id, {
+          ...savedGift,
+          priceAlert: false
+        });
+        
+        setSavedGifts(prev => prev.map(sg => 
+          sg.Id === savedGift.Id ? updated : sg
+        ));
+        
+        toast.success("Price alert disabled");
+      } catch (err) {
+        toast.error("Failed to update price alert");
+      }
+    }
+  };
+
+  const handleSaveAlertConfig = async (config) => {
     try {
-      const updated = await savedGiftService.update(savedGift.Id, {
-        ...savedGift,
-        priceAlert: !savedGift.priceAlert
+      await savedGiftService.createPriceAlert(selectedSavedGift.Id, config);
+      
+      const updated = await savedGiftService.update(selectedSavedGift.Id, {
+        ...selectedSavedGift,
+        priceAlert: true
       });
       
       setSavedGifts(prev => prev.map(sg => 
-        sg.Id === savedGift.Id ? updated : sg
+        sg.Id === selectedSavedGift.Id ? updated : sg
       ));
       
-      toast.success(
-        updated.priceAlert 
-          ? "Price alert enabled!" 
-          : "Price alert disabled"
-      );
+      setShowAlertConfig(false);
+      setSelectedSavedGift(null);
+      toast.success("Price alert configured and enabled!");
     } catch (err) {
-      toast.error("Failed to update price alert");
+      toast.error("Failed to configure price alert");
     }
   };
 
@@ -352,6 +378,21 @@ const Saved = () => {
               Find Gifts to Save
             </Button>
           }
+        />
+      )}
+{/* Alert Configuration Modal */}
+      {showAlertConfig && selectedSavedGift && (
+        <AlertConfigModal
+          alert={{
+            ...selectedSavedGift,
+            gift: selectedSavedGift.gift,
+            recipient: selectedSavedGift.recipient
+          }}
+          onSave={handleSaveAlertConfig}
+          onClose={() => {
+            setShowAlertConfig(false);
+            setSelectedSavedGift(null);
+          }}
         />
       )}
     </div>

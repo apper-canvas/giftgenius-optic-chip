@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import PriceAlerts from "@/components/pages/PriceAlerts";
 import Layout from "@/components/organisms/Layout";
 import Home from "@/components/pages/Home";
 import Recipients from "@/components/pages/Recipients";
@@ -12,11 +13,12 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Layout />}>
+<Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="recipients" element={<Recipients />} />
             <Route path="reminders" element={<Reminders />} />
             <Route path="saved" element={<Saved />} />
+            <Route path="price-alerts" element={<PriceAlerts />} />
           </Route>
         </Routes>
         

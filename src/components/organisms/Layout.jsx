@@ -8,11 +8,12 @@ const Layout = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const location = useLocation();
 
-  const navigation = [
+const navigation = [
     { name: "Home", href: "/", icon: "Home" },
     { name: "Recipients", href: "/recipients", icon: "Users" },
     { name: "Reminders", href: "/reminders", icon: "Bell" },
-    { name: "Saved", href: "/saved", icon: "Bookmark" }
+    { name: "Saved", href: "/saved", icon: "Bookmark" },
+    { name: "Price Alerts", href: "/price-alerts", icon: "TrendingDown" }
   ];
 
   const closeMobileMenu = () => {
@@ -41,7 +42,7 @@ const Layout = () => {
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
               <li>
                 <ul role="list" className="-mx-2 space-y-1">
-                  {navigation.map((item) => {
+{navigation.map((item) => {
                     const isActive = location.pathname === item.href;
                     return (
                       <li key={item.name}>
@@ -137,7 +138,7 @@ const Layout = () => {
             </div>
 
             <nav className="mt-5">
-              <ul role="list" className="space-y-1">
+<ul role="list" className="space-y-1">
                 {navigation.map((item) => {
                   const isActive = location.pathname === item.href;
                   return (
