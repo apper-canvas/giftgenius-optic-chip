@@ -136,15 +136,25 @@ const RecipientCard = ({ recipient, onFindGifts, className, ...props }) => {
               Find Perfect Gifts
             </Button>
             
-            <Button 
-              variant="secondary" 
-              size="sm" 
-              className="w-full"
-              icon="Users2"
-              onClick={() => window.location.href = `/group-gifts?recipient=${recipient.Id}`}
-            >
-              Create Group Gift
-            </Button>
+            <div className="grid grid-cols-2 gap-2">
+              <Button 
+                variant="secondary" 
+                size="sm" 
+                icon="Users2"
+                onClick={() => window.location.href = `/group-gifts?recipient=${recipient.Id}`}
+              >
+                Group Gift
+              </Button>
+              
+              <Button 
+                variant="accent" 
+                size="sm" 
+                icon="Share2"
+                onClick={() => window.location.href = `/social?recipient=${recipient.Id}`}
+              >
+                Social Gifts
+              </Button>
+            </div>
           </div>
         </div>
       </Card>

@@ -110,18 +110,38 @@ const GiftCard = ({ gift, onSave, onBuy, onViewInstructions, className, ...props
 
           {/* Action Buttons */}
 {/* Action Buttons */}
-          <div className={`grid gap-3 pt-2 ${gift.category === 'DIY' ? 'grid-cols-3' : 'grid-cols-2'}`}>
-            <Button variant="outline" size="sm" onClick={handleSave}>
-              <ApperIcon name={isSaved ? "Check" : "Bookmark"} size={16} />
-              {isSaved ? "Saved" : "Save"}
-            </Button>
+          <div className={`grid gap-2 pt-2 ${gift.category === 'DIY' ? 'grid-cols-2' : 'grid-cols-2'}`}>
+            <div className="flex gap-2">
+              <Button variant="outline" size="sm" onClick={handleSave} className="flex-1">
+                <ApperIcon name={isSaved ? "Check" : "Bookmark"} size={16} />
+                {isSaved ? "Saved" : "Save"}
+              </Button>
+              <Button 
+                variant="ghost" 
+                size="sm" 
+                onClick={() => {
+                  if (navigator.share) {
+                    navigator.share({
+                      title: gift.title,
+                      text: `Check out this gift idea: ${gift.title} - ${gift.reasoning}`,
+                      url: gift.purchaseUrl || window.location.href
+                    });
+                  } else {
+                    navigator.clipboard.writeText(`${gift.title} - ${gift.purchaseUrl || window.location.href}`);
+                    onSave?.({ ...gift, shared: true });
+                  }
+                }}
+              >
+                <ApperIcon name="Share2" size={16} />
+              </Button>
+            </div>
             {gift.category === 'DIY' && (
               <Button variant="success" size="sm" onClick={() => onViewInstructions?.(gift)}>
                 <ApperIcon name="BookOpen" size={16} />
                 Instructions
               </Button>
             )}
-            <Button variant="primary" size="sm" onClick={() => onBuy?.(gift)}>
+            <Button variant="primary" size="sm" onClick={() => onBuy?.(gift)} className={gift.category === 'DIY' ? '' : 'col-span-2'}>
               <ApperIcon name="ShoppingCart" size={16} />
               Buy Now
             </Button>

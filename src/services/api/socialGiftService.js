@@ -1,0 +1,197 @@
+import friendsData from '@/services/mockData/friends.json';
+import sharedWishlistsData from '@/services/mockData/sharedWishlists.json';
+import socialGiftsData from '@/services/mockData/socialGifts.json';
+
+class SocialGiftService {
+  constructor() {
+    this.friends = [...friendsData];
+    this.sharedWishlists = [...sharedWishlistsData];
+    this.giftActivities = [...socialGiftsData];
+  }
+
+  async delay(ms = 500) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  getNextId(array) {
+    return Math.max(...array.map(item => item.Id), 0) + 1;
+  }
+
+  // Friends Management
+  async getFriends() {
+    await this.delay();
+    return [...this.friends];
+  }
+
+  async addFriend(friendData) {
+    await this.delay();
+    
+    const newFriend = {
+      Id: this.getNextId(this.friends),
+      name: friendData.name,
+      email: friendData.email,
+      photoUrl: friendData.photoUrl || "",
+      status: 'pending',
+      mutualFriends: 0,
+      joinedAt: new Date().toISOString(),
+      lastActive: new Date().toISOString()
+    };
+
+    this.friends.push(newFriend);
+    return { ...newFriend };
+  }
+
+  async removeFriend(id) {
+    await this.delay();
+    
+    const index = this.friends.findIndex(f => f.Id === parseInt(id));
+    if (index === -1) {
+      throw new Error(`Friend with ID ${id} not found`);
+    }
+
+    const deleted = this.friends.splice(index, 1)[0];
+    return { ...deleted };
+  }
+
+  // Shared Wishlists
+  async getSharedWishlists() {
+    await this.delay();
+    return [...this.sharedWishlists];
+  }
+
+  async createSharedWishlist(wishlistData) {
+    await this.delay();
+    
+    const newWishlist = {
+      Id: this.getNextId(this.sharedWishlists),
+      title: wishlistData.title,
+      description: wishlistData.description || '',
+      isPublic: wishlistData.isPublic || false,
+      allowContributions: wishlistData.allowContributions || true,
+      createdBy: 'current-user@example.com',
+      createdAt: new Date().toISOString(),
+      collaborators: [{
+        Id: 1,
+        name: 'You',
+        email: 'current-user@example.com',
+        role: 'owner'
+      }],
+      items: []
+    };
+
+    this.sharedWishlists.push(newWishlist);
+    return { ...newWishlist };
+  }
+
+  async updateWishlistPrivacy(id, isPublic) {
+    await this.delay();
+    
+    const index = this.sharedWishlists.findIndex(w => w.Id === parseInt(id));
+    if (index === -1) {
+      throw new Error(`Wishlist with ID ${id} not found`);
+    }
+
+    this.sharedWishlists[index].isPublic = isPublic;
+    return { ...this.sharedWishlists[index] };
+  }
+
+  async addItemToWishlist(wishlistId, item) {
+    await this.delay();
+    
+    const wishlist = this.sharedWishlists.find(w => w.Id === parseInt(wishlistId));
+    if (!wishlist) {
+      throw new Error(`Wishlist with ID ${wishlistId} not found`);
+    }
+
+    const newItem = {
+      Id: Math.max(...wishlist.items.map(i => i.Id || 0), 0) + 1,
+      ...item,
+      addedAt: new Date().toISOString(),
+      addedBy: 'current-user@example.com'
+    };
+
+    wishlist.items.push(newItem);
+    return newItem;
+  }
+
+  // Gift Activities
+  async getGiftActivities() {
+    await this.delay();
+    return [...this.giftActivities];
+  }
+
+  async shareGift(giftId, friendIds, message = '') {
+    await this.delay();
+    
+    const activities = friendIds.map(friendId => {
+      const friend = this.friends.find(f => f.Id === parseInt(friendId));
+      return {
+        Id: this.getNextId(this.giftActivities),
+        type: 'shared',
+        friendId: parseInt(friendId),
+        friendName: friend?.name || 'Unknown Friend',
+        friendPhotoUrl: friend?.photoUrl || '',
+        giftId: parseInt(giftId),
+        giftTitle: `Gift #${giftId}`,
+        recipientId: null,
+        recipientName: '',
+        timestamp: new Date().toISOString(),
+        privacy: 'public',
+        message: message,
+        canView: true,
+        reactions: []
+      };
+    });
+
+    this.giftActivities.push(...activities);
+    return activities;
+  }
+
+  async recordGiftActivity(activityData) {
+    await this.delay();
+    
+    const newActivity = {
+      Id: this.getNextId(this.giftActivities),
+      type: activityData.type || 'shared',
+      friendId: parseInt(activityData.friendId),
+      friendName: activityData.friendName,
+      friendPhotoUrl: activityData.friendPhotoUrl || '',
+      giftId: parseInt(activityData.giftId),
+      giftTitle: activityData.giftTitle,
+      recipientId: activityData.recipientId ? parseInt(activityData.recipientId) : null,
+      recipientName: activityData.recipientName || '',
+      occasion: activityData.occasion || '',
+      price: activityData.price || null,
+      timestamp: new Date().toISOString(),
+      privacy: activityData.privacy || 'public',
+      notes: activityData.notes || '',
+      canView: activityData.canView !== false,
+      reactions: []
+    };
+
+    this.giftActivities.push(newActivity);
+    return { ...newActivity };
+  }
+
+  // Social Stats
+  async getSocialStats() {
+    await this.delay();
+    
+    const stats = {
+      totalFriends: this.friends.length,
+      connectedFriends: this.friends.filter(f => f.status === 'connected').length,
+      totalWishlists: this.sharedWishlists.length,
+      publicWishlists: this.sharedWishlists.filter(w => w.isPublic).length,
+      recentActivities: this.giftActivities.filter(a => {
+        const activityDate = new Date(a.timestamp);
+        const weekAgo = new Date();
+        weekAgo.setDate(weekAgo.getDate() - 7);
+        return activityDate > weekAgo;
+      }).length
+    };
+
+    return stats;
+  }
+}
+
+export const socialGiftService = new SocialGiftService();

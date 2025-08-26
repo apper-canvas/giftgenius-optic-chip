@@ -141,8 +141,8 @@ const SocialConnectModal = ({ isOpen, onClose }) => {
           <div className="flex items-center justify-between mb-6">
             <div>
               <h2 className="text-2xl font-bold gradient-text">Connect Social Media</h2>
-              <p className="text-gray-600 mt-1">
-                Import your wishlists and preferences from social platforms to get better gift suggestions
+<p className="text-gray-600 mt-1">
+                Import your wishlists and preferences from social platforms to get better gift suggestions and share with friends
               </p>
               {connectedCount > 0 && (
                 <Badge variant="success" className="mt-2">

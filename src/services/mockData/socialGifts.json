@@ -1,0 +1,206 @@
+[
+  {
+    "Id": 1,
+    "type": "gifted",
+    "friendId": 1,
+    "friendName": "Jessica Martinez",
+    "friendPhotoUrl": "",
+    "giftId": 2,
+    "giftTitle": "Bamboo Yoga Mat with Carrying Strap",
+    "recipientId": 1,
+    "recipientName": "Sarah Johnson",
+    "occasion": "Birthday",
+    "price": 68,
+    "timestamp": "2024-01-10T15:30:00Z",
+    "privacy": "public",
+    "notes": "Perfect for her daily yoga practice! She mentioned wanting a more eco-friendly mat.",
+    "canView": true,
+    "reactions": [
+      {
+        "Id": 1,
+        "type": "like",
+        "userId": "current-user",
+        "userName": "You",
+        "timestamp": "2024-01-10T16:00:00Z"
+      },
+      {
+        "Id": 2,
+        "type": "comment",
+        "userId": "alex.chen@email.com",
+        "userName": "Alex Chen",
+        "comment": "Great choice! She'll love this.",
+        "timestamp": "2024-01-10T16:15:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "type": "suggested",
+    "friendId": 2,
+    "friendName": "Alex Chen",
+    "friendPhotoUrl": "",
+    "giftId": 4,
+    "giftTitle": "Mechanical Gaming Keyboard RGB",
+    "recipientId": 2,
+    "recipientName": "Michael Chen",
+    "occasion": "Christmas",
+    "price": 159,
+    "timestamp": "2024-01-09T11:45:00Z",
+    "privacy": "public",
+    "notes": "He's been talking about upgrading his setup. This would be perfect for his gaming sessions.",
+    "canView": true,
+    "reactions": [
+      {
+        "Id": 1,
+        "type": "like",
+        "userId": "sam.wilson@email.com",
+        "userName": "Sam Wilson",
+        "timestamp": "2024-01-09T12:00:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "type": "shared",
+    "friendId": 3,
+    "friendName": "Taylor Kim",
+    "friendPhotoUrl": "",
+    "giftId": 6,
+    "giftTitle": "Professional Art Supply Set",
+    "recipientId": 3,
+    "recipientName": "Emma Rodriguez",
+    "occasion": "Graduation",
+    "price": 245,
+    "timestamp": "2024-01-08T14:20:00Z",
+    "privacy": "public",
+    "notes": "Saw this and thought it would be perfect for Emma's graduation gift. High-quality supplies for her art career!",
+    "canView": true,
+    "reactions": [
+      {
+        "Id": 1,
+        "type": "like",
+        "userId": "jessica.martinez@email.com",
+        "userName": "Jessica Martinez",
+        "timestamp": "2024-01-08T14:30:00Z"
+      },
+      {
+        "Id": 2,
+        "type": "like",
+        "userId": "current-user",
+        "userName": "You",
+        "timestamp": "2024-01-08T15:00:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "type": "gifted",
+    "friendId": 5,
+    "friendName": "Sam Wilson",
+    "friendPhotoUrl": "",
+    "giftId": 8,
+    "giftTitle": "Couples Wine Tasting Experience",
+    "recipientId": 4,
+    "recipientName": "David Thompson",
+    "occasion": "Anniversary",
+    "price": 185,
+    "timestamp": "2024-01-07T18:00:00Z",
+    "privacy": "private",
+    "notes": "Anniversary gift for David and his partner. They love wine and experiences together.",
+    "canView": false,
+    "reactions": []
+  },
+  {
+    "Id": 5,
+    "type": "suggested",
+    "friendId": 1,
+    "friendName": "Jessica Martinez",
+    "friendPhotoUrl": "",
+    "giftId": 9,
+    "giftTitle": "Premium Skincare Gift Set",
+    "recipientId": 5,
+    "recipientName": "Lisa Park",
+    "occasion": "Birthday",
+    "price": 125,
+    "timestamp": "2024-01-06T13:15:00Z",
+    "privacy": "public",
+    "notes": "Lisa is always talking about skincare routines. This set looks amazing and uses natural ingredients!",
+    "canView": true,
+    "reactions": [
+      {
+        "Id": 1,
+        "type": "like",
+        "userId": "taylor.kim@email.com",
+        "userName": "Taylor Kim",
+        "timestamp": "2024-01-06T13:30:00Z"
+      },
+      {
+        "Id": 2,
+        "type": "comment",
+        "userId": "current-user",
+        "userName": "You",
+        "comment": "This is perfect! I was looking for something like this for her.",
+        "timestamp": "2024-01-06T14:00:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 6,
+    "type": "shared",
+    "friendId": 2,
+    "friendName": "Alex Chen",
+    "friendPhotoUrl": "",
+    "giftId": 11,
+    "giftTitle": "Premium Golf Accessories Set",
+    "recipientId": 6,
+    "recipientName": "Robert Wilson",
+    "occasion": "Birthday",
+    "price": 168,
+    "timestamp": "2024-01-05T10:30:00Z",
+    "privacy": "public",
+    "notes": "Found this golf set that would be great for Robert's birthday. He's always on the course!",
+    "canView": true,
+    "reactions": [
+      {
+        "Id": 1,
+        "type": "like",
+        "userId": "sam.wilson@email.com",
+        "userName": "Sam Wilson",
+        "timestamp": "2024-01-05T11:00:00Z"
+      }
+    ]
+  },
+  {
+    "Id": 7,
+    "type": "gifted",
+    "friendId": 3,
+    "friendName": "Taylor Kim",
+    "friendPhotoUrl": "",
+    "giftId": 15,
+    "giftTitle": "DIY Terrarium Kit",
+    "recipientId": 5,
+    "recipientName": "Lisa Park",
+    "occasion": "Thank You",
+    "price": 34,
+    "timestamp": "2024-01-04T16:45:00Z",
+    "privacy": "public",
+    "notes": "Small thank you gift for Lisa helping me move. She loves plants and DIY projects!",
+    "canView": true,
+    "reactions": [
+      {
+        "Id": 1,
+        "type": "like",
+        "userId": "current-user",
+        "userName": "You",
+        "timestamp": "2024-01-04T17:00:00Z"
+      },
+      {
+        "Id": 2,
+        "type": "like",
+        "userId": "jessica.martinez@email.com",
+        "userName": "Jessica Martinez",
+        "timestamp": "2024-01-04T17:15:00Z"
+      }
+    ]
+  }
+]

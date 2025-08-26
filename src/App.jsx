@@ -8,20 +8,22 @@ import Recipients from "@/components/pages/Recipients";
 import Reminders from "@/components/pages/Reminders";
 import Saved from "@/components/pages/Saved";
 import GroupGifts from "@/components/pages/GroupGifts";
+import SocialGifting from "@/components/pages/SocialGifting";
 import DIYInstructions from "@/components/pages/DIYInstructions";
 
 function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Routes>
-<Route path="/" element={<Layout />}>
+<Routes>
+          <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="recipients" element={<Recipients />} />
             <Route path="reminders" element={<Reminders />} />
-<Route path="saved" element={<Saved />} />
+            <Route path="saved" element={<Saved />} />
             <Route path="price-alerts" element={<PriceAlerts />} />
             <Route path="group-gifts" element={<GroupGifts />} />
+            <Route path="social" element={<SocialGifting />} />
             <Route path="diy-instructions/:id" element={<DIYInstructions />} />
           </Route>
         </Routes>

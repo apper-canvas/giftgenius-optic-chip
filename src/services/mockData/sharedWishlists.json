@@ -1,0 +1,164 @@
+[
+  {
+    "Id": 1,
+    "title": "Birthday Wishlist 2024",
+    "description": "Things I'm hoping for this birthday - feel free to contribute ideas!",
+    "isPublic": true,
+    "allowContributions": true,
+    "createdBy": "current-user@example.com",
+    "createdAt": "2024-01-05T10:00:00Z",
+    "collaborators": [
+      {
+        "Id": 1,
+        "name": "You",
+        "email": "current-user@example.com",
+        "role": "owner"
+      },
+      {
+        "Id": 2,
+        "name": "Jessica Martinez",
+        "email": "jessica.martinez@email.com",
+        "role": "collaborator"
+      },
+      {
+        "Id": 3,
+        "name": "Alex Chen",
+        "email": "alex.chen@email.com",
+        "role": "collaborator"
+      }
+    ],
+    "items": [
+      {
+        "Id": 1,
+        "title": "Wireless Noise-Cancelling Headphones",
+        "price": 299,
+        "imageUrl": "",
+        "addedBy": "current-user@example.com",
+        "addedAt": "2024-01-05T10:15:00Z",
+        "priority": "high",
+        "purchased": false
+      },
+      {
+        "Id": 2,
+        "title": "Sustainable Coffee Subscription",
+        "price": 45,
+        "imageUrl": "",
+        "addedBy": "jessica.martinez@email.com",
+        "addedAt": "2024-01-06T14:20:00Z",
+        "priority": "medium",
+        "purchased": false
+      },
+      {
+        "Id": 3,
+        "title": "Yoga Mat & Accessories Set",
+        "price": 89,
+        "imageUrl": "",
+        "addedBy": "alex.chen@email.com",
+        "addedAt": "2024-01-07T09:30:00Z",
+        "priority": "medium",
+        "purchased": true,
+        "purchasedBy": "alex.chen@email.com"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "title": "Wedding Gift Ideas for Sarah & Mike",
+    "description": "Collaborative list for Sarah and Mike's wedding gift",
+    "isPublic": false,
+    "allowContributions": true,
+    "createdBy": "sam.wilson@email.com",
+    "createdAt": "2024-01-08T16:30:00Z",
+    "collaborators": [
+      {
+        "Id": 1,
+        "name": "Sam Wilson",
+        "email": "sam.wilson@email.com",
+        "role": "owner"
+      },
+      {
+        "Id": 2,
+        "name": "You",
+        "email": "current-user@example.com",
+        "role": "collaborator"
+      },
+      {
+        "Id": 3,
+        "name": "Taylor Kim",
+        "email": "taylor.kim@email.com",
+        "role": "collaborator"
+      }
+    ],
+    "items": [
+      {
+        "Id": 1,
+        "title": "Premium Kitchen Appliance Set",
+        "price": 450,
+        "imageUrl": "",
+        "addedBy": "sam.wilson@email.com",
+        "addedAt": "2024-01-08T16:45:00Z",
+        "priority": "high",
+        "purchased": false
+      },
+      {
+        "Id": 2,
+        "title": "Personalized Photo Album",
+        "price": 75,
+        "imageUrl": "",
+        "addedBy": "current-user@example.com",
+        "addedAt": "2024-01-09T11:20:00Z",
+        "priority": "medium",
+        "purchased": false
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "title": "Holiday Gift Exchange 2024",
+    "description": "Secret Santa gift ideas - budget $50",
+    "isPublic": true,
+    "allowContributions": false,
+    "createdBy": "taylor.kim@email.com",
+    "createdAt": "2023-12-01T09:00:00Z",
+    "collaborators": [
+      {
+        "Id": 1,
+        "name": "Taylor Kim",
+        "email": "taylor.kim@email.com",
+        "role": "owner"
+      }
+    ],
+    "items": [
+      {
+        "Id": 1,
+        "title": "Artisan Candle Set",
+        "price": 35,
+        "imageUrl": "",
+        "addedBy": "taylor.kim@email.com",
+        "addedAt": "2023-12-01T09:15:00Z",
+        "priority": "medium",
+        "purchased": false
+      },
+      {
+        "Id": 2,
+        "title": "Gourmet Tea Collection",
+        "price": 42,
+        "imageUrl": "",
+        "addedBy": "taylor.kim@email.com",
+        "addedAt": "2023-12-01T09:20:00Z",
+        "priority": "high",
+        "purchased": false
+      },
+      {
+        "Id": 3,
+        "title": "Cozy Reading Socks",
+        "price": 28,
+        "imageUrl": "",
+        "addedBy": "taylor.kim@email.com",
+        "addedAt": "2023-12-01T09:25:00Z",
+        "priority": "low",
+        "purchased": false
+      }
+    ]
+  }
+]
