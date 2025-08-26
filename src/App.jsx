@@ -8,6 +8,7 @@ import Recipients from "@/components/pages/Recipients";
 import Reminders from "@/components/pages/Reminders";
 import Saved from "@/components/pages/Saved";
 import GroupGifts from "@/components/pages/GroupGifts";
+import DIYInstructions from "@/components/pages/DIYInstructions";
 
 function App() {
   return (
@@ -18,9 +19,10 @@ function App() {
             <Route index element={<Home />} />
             <Route path="recipients" element={<Recipients />} />
             <Route path="reminders" element={<Reminders />} />
-            <Route path="saved" element={<Saved />} />
+<Route path="saved" element={<Saved />} />
             <Route path="price-alerts" element={<PriceAlerts />} />
             <Route path="group-gifts" element={<GroupGifts />} />
+            <Route path="diy-instructions/:id" element={<DIYInstructions />} />
           </Route>
         </Routes>
         

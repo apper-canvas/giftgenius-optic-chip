@@ -47,9 +47,14 @@ const Home = () => {
     navigate("/recipients", { state: { selectedRecipient: recipient } });
   };
 
-  const handleQuickGift = () => {
+const handleQuickGift = () => {
     navigate("/recipients");
     toast.info("Select a recipient to find perfect gifts!");
+  };
+
+  const handleDIYProjects = () => {
+    navigate("/recipients");
+    toast.info("Find DIY gift ideas with step-by-step instructions!");
   };
 
   if (loading) return <Loading message="Loading your dashboard..." />;
@@ -116,17 +121,17 @@ const Home = () => {
             </div>
           </Card>
 
-          <Card className="text-center bg-gradient-to-br from-green-50 to-emerald-50 border-green-200" hoverable>
+<Card className="text-center bg-gradient-to-br from-green-50 to-emerald-50 border-green-200" hoverable>
             <div className="space-y-4">
               <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto">
-                <ApperIcon name="Bell" className="w-8 h-8 text-white" />
+                <ApperIcon name="Hammer" className="w-8 h-8 text-white" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">Set Reminders</h3>
-                <p className="text-gray-600 text-sm">Never miss an important occasion</p>
+                <h3 className="text-lg font-semibold text-gray-900">DIY Projects</h3>
+                <p className="text-gray-600 text-sm">Create personalized gifts with step-by-step guides</p>
               </div>
-              <Button variant="outline" size="sm" onClick={() => navigate("/reminders")}>
-                View All
+              <Button variant="success" size="sm" onClick={handleDIYProjects}>
+                Get Started
               </Button>
             </div>
           </Card>

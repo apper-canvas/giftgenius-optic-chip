@@ -184,7 +184,7 @@
   {
     "Id": 15,
     "title": "DIY Terrarium Kit",
-    "category": "DIY",
+"category": "DIY",
     "price": 34,
     "imageUrl": "",
     "reasoning": "Create your own miniature garden with this complete terrarium kit - perfect for plant lovers and creative projects.",
@@ -192,7 +192,10 @@
     "deliveryDays": 2,
     "vendor": "Terrain",
     "purchaseUrl": "https://shopterrain.com",
-    "tags": ["DIY", "terrarium", "plants", "creative"]
+    "tags": ["DIY", "terrarium", "plants", "creative"],
+    "difficulty": "Beginner",
+    "timeEstimate": "45 minutes",
+    "hasInstructions": true
   },
   {
     "Id": 16,

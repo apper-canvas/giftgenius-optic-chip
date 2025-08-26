@@ -254,6 +254,7 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
                     gift={gift}
                     onSave={handleSaveGift}
                     onBuy={handleBuyGift}
+                    onViewInstructions={(gift) => window.location.href = `/diy-instructions/${gift.Id}`}
                     onCreateGroupGift={() => window.location.href = `/group-gifts?recipient=${recipient.Id}&gift=${gift.Id}`}
                     recipient={recipient}
                   />

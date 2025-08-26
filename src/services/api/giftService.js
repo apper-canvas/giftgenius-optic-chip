@@ -55,6 +55,121 @@ class GiftService {
     return recommendations
       .sort((a, b) => b.matchScore - a.matchScore)
       .slice(0, 15); // Return top 15 recommendations
+}
+
+  async generateDIYInstructions(giftId) {
+    await this.delay(500);
+    const gift = await this.getById(giftId);
+    
+    if (!gift || gift.category !== 'DIY') {
+      throw new Error('Gift not found or not a DIY project');
+    }
+
+    // Generate detailed instructions based on gift type
+    const instructionTemplates = {
+      'DIY Terrarium Kit': {
+        materials: [
+          { item: 'Glass container or jar', quantity: '1', essential: true },
+          { item: 'Small rocks or pebbles', quantity: '1 cup', essential: true },
+          { item: 'Activated charcoal', quantity: '2 tbsp', essential: true },
+          { item: 'Potting soil', quantity: '2 cups', essential: true },
+          { item: 'Small plants (succulents recommended)', quantity: '2-3', essential: true },
+          { item: 'Decorative elements (stones, figures)', quantity: 'as desired', essential: false },
+          { item: 'Spray bottle', quantity: '1', essential: true },
+          { item: 'Small spoon or tweezers', quantity: '1', essential: true }
+        ],
+        tools: ['Small spoon', 'Tweezers', 'Spray bottle'],
+        difficulty: 'Beginner',
+        timeEstimate: '45 minutes',
+        steps: [
+          {
+            title: 'Prepare the Base Layer',
+            description: 'Add a layer of small rocks or pebbles to the bottom of your container for drainage.',
+            image: '/images/diy/terrarium-step1.jpg',
+            duration: '5 minutes',
+            tips: ['Use rocks about 1/4 to 1/2 inch in size', 'Layer should be about 1 inch deep']
+          },
+          {
+            title: 'Add Charcoal Layer',
+            description: 'Sprinkle activated charcoal over the rocks to prevent odors and bacterial growth.',
+            image: '/images/diy/terrarium-step2.jpg',
+            duration: '3 minutes',
+            tips: ['A thin layer is sufficient', 'Charcoal helps keep the terrarium fresh']
+          },
+          {
+            title: 'Create Soil Foundation',
+            description: 'Add a layer of potting soil, making it deeper where you plan to plant.',
+            image: '/images/diy/terrarium-step3.jpg',
+            duration: '7 minutes',
+            tips: ['Soil layer should be 2-3 inches deep', 'Create small hills for visual interest']
+          },
+          {
+            title: 'Plant Your Greenery',
+            description: 'Carefully plant your chosen plants, starting with the largest ones first.',
+            image: '/images/diy/terrarium-step4.jpg',
+            duration: '15 minutes',
+            tips: ['Use tweezers for precise placement', 'Leave space for plants to grow']
+          },
+          {
+            title: 'Add Decorative Elements',
+            description: 'Place decorative stones, moss, or small figurines to personalize your terrarium.',
+            image: '/images/diy/terrarium-step5.jpg',
+            duration: '10 minutes',
+            tips: ['Less is more with decorations', 'Consider the scale of your container']
+          },
+          {
+            title: 'Final Watering and Setup',
+            description: 'Lightly mist the terrarium and place it in a location with indirect sunlight.',
+            image: '/images/diy/terrarium-step6.jpg',
+            duration: '5 minutes',
+            tips: ['Avoid overwatering', 'Bright, indirect light is best']
+          }
+        ]
+      }
+    };
+
+    // Default template for other DIY projects
+    const defaultTemplate = {
+      materials: [
+        { item: 'Basic craft materials', quantity: 'varies', essential: true },
+        { item: 'Decorative elements', quantity: 'as needed', essential: false }
+      ],
+      tools: ['Basic crafting tools'],
+      difficulty: 'Intermediate',
+      timeEstimate: '1-2 hours',
+      steps: [
+        {
+          title: 'Gather Materials',
+          description: 'Collect all necessary materials and prepare your workspace.',
+          image: '/images/diy/generic-step1.jpg',
+          duration: '10 minutes',
+          tips: ['Read through all instructions first', 'Organize materials within easy reach']
+        },
+        {
+          title: 'Create Your Project',
+          description: 'Follow the specific instructions for your chosen DIY project.',
+          image: '/images/diy/generic-step2.jpg',
+          duration: '60-90 minutes',
+          tips: ['Take your time', 'Don\'t be afraid to get creative']
+        },
+        {
+          title: 'Finishing Touches',
+          description: 'Add final details and let your project dry or set as needed.',
+          image: '/images/diy/generic-step3.jpg',
+          duration: '15 minutes',
+          tips: ['Allow proper drying time', 'Consider packaging for gifting']
+        }
+      ]
+    };
+
+    const instructions = instructionTemplates[gift.title] || defaultTemplate;
+
+    return {
+      giftId: gift.Id,
+      gift: { ...gift },
+      ...instructions,
+      createdAt: new Date().toISOString()
+    };
   }
 
   async getByCategory(category) {
@@ -62,7 +177,7 @@ class GiftService {
     return this.data.filter(gift => gift.category === category);
   }
 
-  async create(giftData) {
+async create(giftData) {
     await this.delay(400);
     const newGift = {
       Id: this.getNextId(),
