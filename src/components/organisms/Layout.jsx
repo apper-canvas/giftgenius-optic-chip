@@ -2,10 +2,12 @@ import React from "react";
 import { Outlet, NavLink, useLocation } from "react-router-dom";
 import { cn } from "@/utils/cn";
 import ApperIcon from "@/components/ApperIcon";
+import Button from "@/components/atoms/Button";
+import SocialConnectModal from "@/components/molecules/SocialConnectModal";
 import { motion } from "framer-motion";
-
 const Layout = () => {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isSocialModalOpen, setIsSocialModalOpen] = React.useState(false);
   const location = useLocation();
 
 const navigation = [
@@ -72,9 +74,17 @@ const navigation = [
               </li>
             </ul>
           </nav>
-
-          {/* Footer */}
-          <div className="mt-auto pt-4 border-t border-gray-200">
+{/* Footer */}
+          <div className="mt-auto pt-4 border-t border-gray-200 space-y-3">
+            <Button
+              variant="accent"
+              size="sm"
+              icon="Link"
+              className="w-full text-xs"
+              onClick={() => setIsSocialModalOpen(true)}
+            >
+              Connect Social Media
+            </Button>
             <div className="text-xs text-center text-gray-500">
               AI-Powered Gift Assistant
             </div>
@@ -171,8 +181,7 @@ const navigation = [
           </motion.div>
         </>
       )}
-
-      {/* Main Content */}
+{/* Main Content */}
       <div className="lg:pl-64">
         <main className="flex-1">
           <div className="px-4 sm:px-6 lg:px-8 py-8">
@@ -180,6 +189,12 @@ const navigation = [
           </div>
         </main>
       </div>
+
+      {/* Social Connect Modal */}
+      <SocialConnectModal
+        isOpen={isSocialModalOpen}
+        onClose={() => setIsSocialModalOpen(false)}
+      />
     </div>
   );
 };
