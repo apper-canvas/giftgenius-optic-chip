@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import GiftCard from "@/components/molecules/GiftCard";
+import { giftService } from "@/services/api/giftService";
+import { toast } from "react-toastify";
+import ApperIcon from "@/components/ApperIcon";
 import FilterPanel from "@/components/molecules/FilterPanel";
+import GiftCard from "@/components/molecules/GiftCard";
 import SearchBar from "@/components/molecules/SearchBar";
 import Button from "@/components/atoms/Button";
 import Badge from "@/components/atoms/Badge";
-import ApperIcon from "@/components/ApperIcon";
-import Loading from "@/components/ui/Loading";
+import Recipients from "@/components/pages/Recipients";
 import Error from "@/components/ui/Error";
 import Empty from "@/components/ui/Empty";
-import { giftService } from "@/services/api/giftService";
-import { toast } from "react-toastify";
+import Loading from "@/components/ui/Loading";
 
 const GiftResults = ({ recipient, occasion, onBack }) => {
   const [gifts, setGifts] = React.useState([]);
@@ -19,10 +20,11 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
   const [searchTerm, setSearchTerm] = React.useState("");
   const [sortBy, setSortBy] = React.useState("match");
   
-  const [filters, setFilters] = React.useState({
+const [filters, setFilters] = React.useState({
     categories: [],
     priceRange: { min: 0, max: 1000 },
-    maxDeliveryDays: 7
+    maxDeliveryDays: 7,
+    ecoFriendly: false
   });
 
   const sortOptions = [
@@ -90,9 +92,22 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
       }
       
       // Delivery filter
+// Delivery filter
       if (gift.deliveryDays > filters.maxDeliveryDays) {
         return false;
       }
+      
+      // Eco-friendly filter
+      if (filters.ecoFriendly) {
+        const ecoFriendlyTags = ['eco-friendly', 'organic', 'sustainable', 'bamboo'];
+        const hasEcoFriendlyTag = gift.tags && gift.tags.some(tag => 
+          ecoFriendlyTags.some(ecoTag => tag.toLowerCase().includes(ecoTag))
+        );
+        if (!hasEcoFriendlyTag) {
+          return false;
+        }
+      }
+}
       
       return true;
     });
@@ -109,13 +124,13 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
       default:
         return filtered.sort((a, b) => b.matchScore - a.matchScore);
     }
-  }, [gifts, searchTerm, filters, sortBy]);
 
-  const resetFilters = () => {
+const resetFilters = () => {
     setFilters({
       categories: [],
       priceRange: { min: 0, max: 1000 },
-      maxDeliveryDays: 7
+      maxDeliveryDays: 7,
+      ecoFriendly: false
     });
     setSearchTerm("");
     setSortBy("match");
@@ -137,19 +152,18 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
           </h1>
           <p className="text-gray-600 mt-1">
             AI-powered recommendations for their {occasion.type}
-          </p>
+</p>
         </div>
-<div className="flex items-center justify-between">
-          <div className="flex items-center space-x-4">
-            <Badge variant="accent" size="lg">
-              {filteredAndSortedGifts.length} suggestions
+        
+        <div className="flex items-center space-x-4">
+          <Badge variant="accent" size="lg">
+            {filteredAndSortedGifts.length} suggestions
+          </Badge>
+          {occasion.budget && (
+            <Badge variant="success" size="lg">
+              Budget: ${occasion.budget}
             </Badge>
-            {occasion.budget && (
-              <Badge variant="success" size="lg">
-                Budget: ${occasion.budget}
-              </Badge>
-            )}
-          </div>
+          )}
           
           <Button
             variant="secondary"

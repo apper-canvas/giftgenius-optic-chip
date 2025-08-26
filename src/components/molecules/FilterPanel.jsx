@@ -61,8 +61,29 @@ const FilterPanel = ({ className, filters, onFiltersChange, onReset }) => {
             </label>
           ))}
         </div>
-      </div>
+</div>
 
+      {/* Eco-Friendly Filter */}
+      <div className="space-y-3">
+        <h4 className="text-sm font-medium text-gray-700">Special Criteria</h4>
+        <div className="space-y-2">
+          <label className="flex items-center space-x-3">
+            <input
+              type="checkbox"
+              checked={filters.ecoFriendly}
+              onChange={(e) => onFiltersChange({
+                ...filters,
+                ecoFriendly: e.target.checked
+              })}
+              className="w-4 h-4 text-green-500 border-gray-300 rounded focus:ring-green-400"
+            />
+            <div className="flex items-center space-x-2">
+              <ApperIcon name="Leaf" size={16} className="text-green-500" />
+              <span className="text-sm text-gray-700">Eco-Friendly</span>
+            </div>
+          </label>
+        </div>
+      </div>
       {/* Price Range */}
       <div className="space-y-3">
         <h4 className="text-sm font-medium text-gray-700">Price Range</h4>
