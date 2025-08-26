@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* React Toastify Styles */
+@import 'react-toastify/dist/ReactToastify.css';
+
+/* Custom toast styling */
+.Toastify__toast-container {
+  @apply z-[9999];
+}
+
+.Toastify__toast {
+  @apply rounded-lg shadow-card-hover;
+  min-height: 48px !important;
+  padding: 8px 12px !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+.Toastify__toast--success {
+  @apply bg-gradient-to-r from-green-500 to-green-600 text-white;
+}
+
+.Toastify__toast--error {
+  @apply bg-gradient-to-r from-red-500 to-red-600 text-white;
+}
+
+.Toastify__toast--info {
+  @apply bg-gradient-to-r from-blue-500 to-blue-600 text-white;
+}
+
+.Toastify__toast--warning {
+  @apply bg-gradient-to-r from-amber-500 to-amber-600 text-white;
+}
+
+/* Global styles */
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #FAF5FF;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-purple-50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-purple-200 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-purple-300;
+}
+
+/* Glass morphism utility */
+.glass {
+  @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-glass;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, #E85D75, #6B46C1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Custom focus states */
+input:focus, textarea:focus, select:focus {
+  @apply outline-none ring-2 ring-secondary-400 ring-opacity-50 border-secondary-400;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a, input, .card {
+  transition: all 200ms ease-out;
+}
+
+/* Card hover effects */
+.card-hover:hover {
+  transform: translateY(-2px) scale(1.02);
+  @apply shadow-card-hover;
+}
+
+/* Loading animation */
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 0px, #e0e0e0 40px, #f0f0f0 80px);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s linear infinite;
+}

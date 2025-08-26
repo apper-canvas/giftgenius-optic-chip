@@ -1,0 +1,116 @@
+[
+  {
+    "Id": 1,
+    "name": "Sarah Johnson",
+    "relationship": "Friend",
+    "age": 28,
+    "interests": ["yoga", "coffee", "photography", "travel", "sustainable living"],
+    "location": "Portland, OR",
+    "photoUrl": "",
+    "occasions": [
+      {
+        "Id": 1,
+        "type": "Birthday",
+        "date": "2024-02-15T00:00:00Z",
+        "budget": 150,
+        "notes": "Loves eco-friendly products and artisanal coffee"
+      }
+    ],
+    "giftHistory": []
+  },
+  {
+    "Id": 2,
+    "name": "Michael Chen",
+    "relationship": "Colleague",
+    "age": 35,
+    "interests": ["technology", "gaming", "craft beer", "cooking", "cycling"],
+    "location": "San Francisco, CA",
+    "photoUrl": "",
+    "occasions": [
+      {
+        "Id": 2,
+        "type": "Christmas",
+        "date": "2024-12-25T00:00:00Z",
+        "budget": 100,
+        "notes": "Big tech enthusiast and loves trying new gadgets"
+      }
+    ],
+    "giftHistory": []
+  },
+  {
+    "Id": 3,
+    "name": "Emma Rodriguez",
+    "relationship": "Family",
+    "age": 22,
+    "interests": ["art", "music", "books", "fashion", "social media"],
+    "location": "Austin, TX",
+    "photoUrl": "",
+    "occasions": [
+      {
+        "Id": 3,
+        "type": "Graduation",
+        "date": "2024-05-20T00:00:00Z",
+        "budget": 300,
+        "notes": "Graduating with art degree, loves creative and artistic gifts"
+      }
+    ],
+    "giftHistory": []
+  },
+  {
+    "Id": 4,
+    "name": "David Thompson",
+    "relationship": "Partner",
+    "age": 32,
+    "interests": ["fitness", "outdoor activities", "wine", "cooking", "movies"],
+    "location": "Denver, CO",
+    "photoUrl": "",
+    "occasions": [
+      {
+        "Id": 4,
+        "type": "Anniversary",
+        "date": "2024-03-08T00:00:00Z",
+        "budget": 200,
+        "notes": "Our 3rd anniversary - loves experiences and quality time together"
+      }
+    ],
+    "giftHistory": []
+  },
+  {
+    "Id": 5,
+    "name": "Lisa Park",
+    "relationship": "Friend",
+    "age": 29,
+    "interests": ["skincare", "wellness", "plants", "reading", "meditation"],
+    "location": "Seattle, WA",
+    "photoUrl": "",
+    "occasions": [
+      {
+        "Id": 5,
+        "type": "Birthday",
+        "date": "2024-04-12T00:00:00Z",
+        "budget": 120,
+        "notes": "Self-care enthusiast who loves plants and mindfulness"
+      }
+    ],
+    "giftHistory": []
+  },
+  {
+    "Id": 6,
+    "name": "Robert Wilson",
+    "relationship": "Family",
+    "age": 58,
+    "interests": ["golf", "grilling", "history books", "classical music", "wine"],
+    "location": "Nashville, TN",
+    "photoUrl": "",
+    "occasions": [
+      {
+        "Id": 6,
+        "type": "Birthday",
+        "date": "2024-06-30T00:00:00Z",
+        "budget": 180,
+        "notes": "Dad's 58th birthday - traditional tastes, loves quality items"
+      }
+    ],
+    "giftHistory": []
+  }
+]

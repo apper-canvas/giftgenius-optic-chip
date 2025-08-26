@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "occasionId": 1,
+    "recipientId": 1,
+    "alertDate": "2024-02-10T09:00:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 2,
+    "occasionId": 4,
+    "recipientId": 4,
+    "alertDate": "2024-03-03T09:00:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 3,
+    "occasionId": 5,
+    "recipientId": 5,
+    "alertDate": "2024-04-07T09:00:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 4,
+    "occasionId": 3,
+    "recipientId": 3,
+    "alertDate": "2024-05-15T09:00:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 5,
+    "occasionId": 6,
+    "recipientId": 6,
+    "alertDate": "2024-06-25T09:00:00Z",
+    "status": "active"
+  },
+  {
+    "Id": 6,
+    "occasionId": 2,
+    "recipientId": 2,
+    "alertDate": "2024-12-20T09:00:00Z",
+    "status": "active"
+  }
+]
