@@ -7,6 +7,7 @@ import Home from "@/components/pages/Home";
 import Recipients from "@/components/pages/Recipients";
 import Reminders from "@/components/pages/Reminders";
 import Saved from "@/components/pages/Saved";
+import GroupGifts from "@/components/pages/GroupGifts";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="reminders" element={<Reminders />} />
             <Route path="saved" element={<Saved />} />
             <Route path="price-alerts" element={<PriceAlerts />} />
+            <Route path="group-gifts" element={<GroupGifts />} />
           </Route>
         </Routes>
         

@@ -131,13 +131,18 @@ const Recipients = () => {
     setSelectedOccasion(null);
   };
 
-  const filteredRecipients = recipients.filter(recipient =>
+const filteredRecipients = recipients.filter(recipient =>
     recipient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     recipient.relationship.toLowerCase().includes(searchTerm.toLowerCase()) ||
     (recipient.interests && recipient.interests.some(interest => 
       interest.toLowerCase().includes(searchTerm.toLowerCase())
     ))
   );
+
+  const handleCreateGroupGift = (recipient) => {
+    // Navigate to group gifts page with recipient pre-selected
+    window.location.href = `/group-gifts?recipient=${recipient.Id}`;
+  };
 
   // If we have a selected recipient and occasion, show gift results
   if (selectedRecipient && selectedOccasion) {

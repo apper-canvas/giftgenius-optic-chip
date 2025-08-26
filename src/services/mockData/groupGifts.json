@@ -1,0 +1,145 @@
+[
+  {
+    "Id": 1,
+    "title": "Sarah's Wedding Gift",
+    "recipientId": 1,
+    "giftId": 12,
+    "occasionType": "Wedding",
+    "targetAmount": 500,
+    "currentAmount": 350,
+    "createdBy": "john@example.com",
+    "createdAt": "2024-01-15T10:00:00Z",
+    "deadline": "2024-02-14T23:59:59Z",
+    "status": "active",
+    "description": "Let's pool together to get Sarah the perfect wedding gift - a beautiful jewelry set she's been wanting!",
+    "contributors": [
+      {
+        "Id": 1,
+        "name": "John Smith",
+        "email": "john@example.com",
+        "amount": 150,
+        "contributedAt": "2024-01-15T10:00:00Z",
+        "message": "So excited for Sarah's big day!"
+      },
+      {
+        "Id": 2,
+        "name": "Emma Wilson",
+        "email": "emma@example.com",
+        "amount": 100,
+        "contributedAt": "2024-01-16T14:30:00Z",
+        "message": "Beautiful choice! Sarah will love this."
+      },
+      {
+        "Id": 3,
+        "name": "Mike Johnson",
+        "email": "mike@example.com",
+        "amount": 100,
+        "contributedAt": "2024-01-17T09:15:00Z",
+        "message": "Happy to contribute to Sarah's special day!"
+      }
+    ],
+    "invitedContributors": [
+      {
+        "email": "alex@example.com",
+        "name": "Alex Brown",
+        "invitedAt": "2024-01-15T10:05:00Z",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "title": "Mom's Birthday Surprise",
+    "recipientId": 2,
+    "giftId": 8,
+    "occasionType": "Birthday",
+    "targetAmount": 200,
+    "currentAmount": 200,
+    "createdBy": "tom@example.com",
+    "createdAt": "2024-01-10T16:20:00Z",
+    "deadline": "2024-01-25T23:59:59Z",
+    "status": "completed",
+    "description": "Let's surprise Mom with that beautiful scarf she admired at the store!",
+    "contributors": [
+      {
+        "Id": 1,
+        "name": "Tom Wilson",
+        "email": "tom@example.com",
+        "amount": 80,
+        "contributedAt": "2024-01-10T16:20:00Z",
+        "message": "Love you, Mom!"
+      },
+      {
+        "Id": 2,
+        "name": "Lisa Wilson",
+        "email": "lisa@example.com",
+        "amount": 70,
+        "contributedAt": "2024-01-11T11:00:00Z",
+        "message": "She's going to love this!"
+      },
+      {
+        "Id": 3,
+        "name": "David Wilson",
+        "email": "david@example.com",
+        "amount": 50,
+        "contributedAt": "2024-01-12T19:45:00Z",
+        "message": "Happy Birthday Mom! 🎉"
+      }
+    ],
+    "invitedContributors": []
+  },
+  {
+    "Id": 3,
+    "title": "Gaming Setup for Jake",
+    "recipientId": 5,
+    "giftId": 25,
+    "occasionType": "Graduation",
+    "targetAmount": 800,
+    "currentAmount": 450,
+    "createdBy": "friends@example.com",
+    "createdAt": "2024-01-20T12:00:00Z",
+    "deadline": "2024-03-01T23:59:59Z",
+    "status": "active",
+    "description": "Jake's graduating and deserves an amazing gaming setup! Let's make his dream come true.",
+    "contributors": [
+      {
+        "Id": 1,
+        "name": "Ryan Miller",
+        "email": "ryan@example.com",
+        "amount": 200,
+        "contributedAt": "2024-01-20T12:00:00Z",
+        "message": "Jake's gonna love this setup!"
+      },
+      {
+        "Id": 2,
+        "name": "Sophie Chen",
+        "email": "sophie@example.com",
+        "amount": 150,
+        "contributedAt": "2024-01-21T15:30:00Z",
+        "message": "Congrats on graduation Jake!"
+      },
+      {
+        "Id": 3,
+        "name": "Mark Davis",
+        "email": "mark@example.com",
+        "amount": 100,
+        "contributedAt": "2024-01-22T08:20:00Z",
+        "message": "You deserve this buddy!"
+      }
+    ],
+    "invitedContributors": [
+      {
+        "email": "anna@example.com",
+        "name": "Anna Lee",
+        "invitedAt": "2024-01-20T12:05:00Z",
+        "status": "pending"
+      },
+      {
+        "email": "chris@example.com",
+        "name": "Chris Taylor",
+        "invitedAt": "2024-01-20T12:05:00Z",
+        "status": "pending"
+      }
+    ]
+  }
+]

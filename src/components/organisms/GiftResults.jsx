@@ -139,16 +139,26 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
             AI-powered recommendations for their {occasion.type}
           </p>
         </div>
-        
-        <div className="flex items-center space-x-4">
-          <Badge variant="accent" size="lg">
-            {filteredAndSortedGifts.length} suggestions
-          </Badge>
-          {occasion.budget && (
-            <Badge variant="success" size="lg">
-              Budget: ${occasion.budget}
+<div className="flex items-center justify-between">
+          <div className="flex items-center space-x-4">
+            <Badge variant="accent" size="lg">
+              {filteredAndSortedGifts.length} suggestions
             </Badge>
-          )}
+            {occasion.budget && (
+              <Badge variant="success" size="lg">
+                Budget: ${occasion.budget}
+              </Badge>
+            )}
+          </div>
+          
+          <Button
+            variant="secondary"
+            size="sm"
+            icon="Users2"
+            onClick={() => window.location.href = `/group-gifts?recipient=${recipient.Id}&occasion=${occasion.Id}`}
+          >
+            Create Group Gift
+          </Button>
         </div>
       </div>
 
@@ -240,10 +250,12 @@ const GiftResults = ({ recipient, occasion, onBack }) => {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3, delay: index * 0.1 }}
                 >
-                  <GiftCard
+<GiftCard
                     gift={gift}
                     onSave={handleSaveGift}
                     onBuy={handleBuyGift}
+                    onCreateGroupGift={() => window.location.href = `/group-gifts?recipient=${recipient.Id}&gift=${gift.Id}`}
+                    recipient={recipient}
                   />
                 </motion.div>
               ))}

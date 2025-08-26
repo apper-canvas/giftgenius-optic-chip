@@ -125,7 +125,7 @@ const RecipientCard = ({ recipient, onFindGifts, className, ...props }) => {
           )}
 
           {/* Action Button */}
-          <div className="pt-2">
+<div className="pt-2 space-y-2">
             <Button 
               variant="primary" 
               size="md" 
@@ -134,6 +134,16 @@ const RecipientCard = ({ recipient, onFindGifts, className, ...props }) => {
               onClick={() => onFindGifts?.(recipient)}
             >
               Find Perfect Gifts
+            </Button>
+            
+            <Button 
+              variant="secondary" 
+              size="sm" 
+              className="w-full"
+              icon="Users2"
+              onClick={() => window.location.href = `/group-gifts?recipient=${recipient.Id}`}
+            >
+              Create Group Gift
             </Button>
           </div>
         </div>
