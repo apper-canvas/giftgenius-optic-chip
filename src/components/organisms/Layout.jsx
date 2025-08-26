@@ -5,10 +5,13 @@ import ApperIcon from "@/components/ApperIcon";
 import Button from "@/components/atoms/Button";
 import SocialConnectModal from "@/components/molecules/SocialConnectModal";
 import { motion } from "framer-motion";
+import { AuthContext } from "@/App";
+
 const Layout = () => {
-const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const [isSocialModalOpen, setIsSocialModalOpen] = React.useState(false);
   const location = useLocation();
+  const authMethods = React.useContext(AuthContext);
 
 const navigation = [
     { name: "Home", href: "/", icon: "Home" },
@@ -91,9 +94,8 @@ const navigation = [
               size="sm"
               icon="LogOut"
               className="w-full text-xs text-red-600 hover:bg-red-50"
-              onClick={() => {
-                const { logout } = React.useContext(require('../../App').AuthContext);
-                logout();
+onClick={() => {
+                authMethods?.logout();
               }}
             >
               Logout
